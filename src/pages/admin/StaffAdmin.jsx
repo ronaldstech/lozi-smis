@@ -1,0 +1,382 @@
+import React, { useState, useEffect, useContext } from 'react';
+import {
+    Box,
+    Button,
+    Typography,
+    Grid,
+    Paper,
+    Fade,
+    Stack
+} from '@mui/material';
+import {
+    UserAdd,
+    ExportCurve,
+    People,
+    TickCircle,
+    CloseCircle,
+    Profile
+} from 'iconsax-react';
+
+import Toastify from 'toastify-js';
+import "toastify-js/src/toastify.css";
+
+import StaffTable from './components/StaffTable';
+import StaffAddDialog from './components/StaffAddDialog';
+import StaffEditDrawer from './components/StaffEditDrawer';
+import { AppContext } from '../../context/AppContext';
+
+import { API_URL } from '../../config';
+
+/* =======================
+   STAT CARD COMPONENT
+======================= */
+const StatCard = ({ title, count, icon, color }) => (
+    <Paper
+        elevation={0}
+        sx={{
+            p: 3,
+            borderRadius: '24px',
+            background: 'rgba(255, 255, 255, 0.7)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(255, 255, 255, 0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 2.5,
+            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+            '&:hover': {
+                transform: 'translateY(-5px)',
+                background: 'rgba(255, 255, 255, 0.9)',
+                boxShadow: '0 20px 40px -10px rgba(0,0,0,0.08)'
+            }
+        }}
+    >
+        <Box
+            sx={{
+                width: 52,
+                height: 52,
+                borderRadius: '16px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: `linear-gradient(135deg, ${color} 0%, ${color}dd 100%)`,
+                color: '#fff',
+                boxShadow: `0 8px 16px -4px ${color}40`,
+            }}
+        >
+            {React.cloneElement(icon, { size: 24, variant: "Bulk" })}
+        </Box>
+
+        <Box>
+            <Typography
+                variant="caption"
+                sx={{
+                    fontWeight: 800,
+                    color: 'text.secondary',
+                    letterSpacing: '0.05em',
+                    textTransform: 'uppercase',
+                    fontSize: '0.65rem'
+                }}
+            >
+                {title}
+            </Typography>
+            <Typography
+                variant="h5"
+                sx={{ fontWeight: 900, color: '#1e293b', letterSpacing: '-0.02em' }}
+            >
+                {count}
+            </Typography>
+        </Box>
+    </Paper>
+);
+
+/* =======================
+   MAIN COMPONENT
+======================= */
+function StaffAdmin() {
+    const [open, setOpen] = useState({ add: false, edit: false });
+    const [active, setActive] = useState({});
+    const [rows, setRows] = useState([]);
+    const [search, setSearch] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
+    const { user, schoolType } = useContext(AppContext);
+
+    const isReadOnly = !user?.isAdmin;
+
+    /* ===== DERIVED STATS ===== */
+    const totalStaff = rows.length;
+    const activeStaff = rows.filter(r => r.status === 'active').length;
+    const inactiveStaff = totalStaff - activeStaff;
+
+    /* ===== FETCH STAFF ===== */
+    const getStaff = async () => {
+        setLoading(true);
+        try {
+            const res = await fetch(`${API_URL}?getStaff=true&school_type=${schoolType}`);
+            const data = await res.json();
+            if (Array.isArray(data)) setRows(data);
+        } catch (err) {
+            Toastify({
+                text: "Failed to load staff data",
+                backgroundColor: "#ef4444",
+                duration: 3000
+            }).showToast();
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    /* ===== UPDATE STAFF ===== */
+    const handleUpdateStaff = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+
+        try {
+            const res = await fetch(API_URL, {
+                method: "POST",
+                body: formData
+            });
+            const data = await res.json();
+
+            if (data.status) {
+                Toastify({
+                    text: data.message || "Updated successfully",
+                    backgroundColor: "#10b981",
+                    duration: 3000
+                }).showToast();
+                setOpen({ ...open, edit: false });
+                getStaff();
+            } else {
+                Toastify({
+                    text: data.message || "Update failed",
+                    backgroundColor: "#ef4444",
+                    duration: 3000
+                }).showToast();
+            }
+        } catch (err) {
+            Toastify({
+                text: "An error occurred. Please try again.",
+                backgroundColor: "#ef4444",
+                duration: 3000
+            }).showToast();
+        }
+    };
+
+    /* ===== UPDATE STATUS ===== */
+    const handleStatusUpdate = async (staffId, newStatus) => {
+        const formData = new FormData();
+        formData.append('staff_id', staffId);
+        formData.append('status', newStatus);
+
+        try {
+            const res = await fetch(API_URL, {
+                method: "POST",
+                body: formData
+            });
+            const data = await res.json();
+
+            if (data.status) {
+                Toastify({
+                    text: data.message || "Status updated successfully",
+                    backgroundColor: "#10b981",
+                    duration: 3000
+                }).showToast();
+                getStaff();
+            } else {
+                Toastify({
+                    text: data.message || "Failed to update status",
+                    backgroundColor: "#ef4444",
+                    duration: 3000
+                }).showToast();
+            }
+        } catch (err) {
+            Toastify({
+                text: "An error occurred. Please try again.",
+                backgroundColor: "#ef4444",
+                duration: 3000
+            }).showToast();
+        }
+    };
+
+    useEffect(() => {
+        getStaff();
+    }, [schoolType]);
+
+    return (
+        <Fade in timeout={600}>
+            <Box
+                sx={{
+                    minHeight: '100vh',
+                    backgroundColor: '#f8fafc',
+                    px: { xs: 0, md: 1 },
+                    py: { xs: 0, md: 1 }
+                }}
+            >
+
+                {/* ================= HEADER (STICKY) ================= */}
+                <Paper
+                    elevation={0}
+                    sx={{
+                        position: { xs: 'relative', md: 'sticky' },
+                        top: 0,
+                        zIndex: 1100,
+                        mb: { xs: 2, md: 4 },
+                        p: { xs: 2.5, md: 3.5 },
+                        borderRadius: '24px',
+                        border: '1px solid rgba(255, 255, 255, 0.4)',
+                        background: 'rgba(255, 255, 255, 0.6)',
+                        backdropFilter: 'blur(20px)',
+                    }}
+                >
+                    <Stack
+                        direction={{ xs: 'column', md: 'row' }}
+                        spacing={{ xs: 1, md: 2 }}
+                        justifyContent="space-between"
+                        alignItems={{ xs: 'stretch', md: 'center' }}
+                    >
+                        <Box>
+                            <Typography
+                                sx={{
+                                    fontSize: { xs: '1.25rem', md: '1.75rem' },
+                                    fontWeight: 900,
+                                    color: '#0f172a'
+                                }}
+                            >
+                                Staff Directory
+                            </Typography>
+                            <Typography sx={{ color: '#64748b', fontSize: 13 }}>
+                                Manage team members, roles, and access
+                            </Typography>
+                        </Box>
+
+                        <Stack
+                            direction={{ xs: 'column', sm: 'row' }}
+                            spacing={1}
+                        >
+                            <Button
+                                fullWidth
+                                variant="outlined"
+                                startIcon={<ExportCurve size={20} />}
+                                onClick={() => window.print()}
+                                sx={{
+                                    borderRadius: '16px',
+                                    textTransform: 'none',
+                                    borderColor: 'rgba(99, 102, 241, 0.2)',
+                                    fontWeight: 700,
+                                    height: 48,
+                                    '&:hover': {
+                                        borderColor: '#6366f1',
+                                        bgcolor: 'rgba(99, 102, 241, 0.05)'
+                                    }
+                                }}
+                            >
+                                Export
+                            </Button>
+
+                            {!isReadOnly && (
+                                <Button
+                                    fullWidth
+                                    variant="contained"
+                                    startIcon={<UserAdd size={20} />}
+                                    onClick={() => setOpen({ ...open, add: true })}
+                                    sx={{
+                                        borderRadius: '16px',
+                                        textTransform: 'none',
+                                        px: 4,
+                                        height: 48,
+                                        fontWeight: 700,
+                                        background: 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)',
+                                        boxShadow: '0 10px 20px -5px rgba(99, 102, 241, 0.4)',
+                                    }}
+                                >
+                                    Add Staff
+                                </Button>
+                            )}
+                        </Stack>
+                    </Stack>
+                </Paper>
+
+
+                {/* ================= STATS ================= */}
+                <Grid container spacing={{ xs: 1, md: 2 }} sx={{ mb: { xs: 2, md: 4 } }}>
+                    <Grid item xs={12} sm={4}>
+                        <StatCard
+                            title="Total Members"
+                            count={totalStaff}
+                            icon={<People />}
+                            color="#6366f1"
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={4}>
+                        <StatCard
+                            title="Active"
+                            count={activeStaff}
+                            icon={<TickCircle />}
+                            color="#10b981"
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={4}>
+                        <StatCard
+                            title="Inactive"
+                            count={inactiveStaff}
+                            icon={<CloseCircle />}
+                            color="#ef4444"
+                        />
+                    </Grid>
+                </Grid>
+
+                {/* ================= TABLE ================= */}
+                <Paper
+                    elevation={0}
+                    sx={{
+                        borderRadius: '24px',
+                        border: '1px solid rgba(0,0,0,0.05)',
+                        overflow: 'hidden',
+                        background: 'rgba(255, 255, 255, 0.6)',
+                        backdropFilter: 'blur(20px)',
+                        boxShadow: '0 10px 40px -10px rgba(0,0,0,0.05)'
+                    }}
+                >
+                    <Box sx={{ overflowX: 'auto' }}>
+                        <StaffTable
+                            rows={rows}
+                            loading={loading}
+                            page={page}
+                            rowsPerPage={rowsPerPage}
+                            search={search}
+                            onSearchChange={(e) => setSearch(e.target.value)}
+                            onPageChange={(e, p) => setPage(p)}
+                            onRowsPerPageChange={(e) => {
+                                setRowsPerPage(parseInt(e.target.value, 10));
+                                setPage(0);
+                            }}
+                            onEditClick={(staff) => {
+                                setActive(staff);
+                                setOpen({ ...open, edit: true });
+                            }}
+                            readOnly={isReadOnly}
+                        />
+                    </Box>
+                </Paper>
+
+                {/* ================= DIALOGS ================= */}
+                <StaffAddDialog
+                    open={open.add}
+                    onClose={() => setOpen({ ...open, add: false })}
+                    onSave={getStaff}
+                />
+
+                <StaffEditDrawer
+                    open={open.edit}
+                    activeStaff={active}
+                    onClose={() => setOpen({ ...open, edit: false })}
+                    onUpdate={handleUpdateStaff}
+                    onActivate={handleStatusUpdate}
+                />
+            </Box>
+        </Fade>
+    );
+}
+
+export default StaffAdmin;
