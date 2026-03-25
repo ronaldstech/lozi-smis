@@ -5,10 +5,18 @@ import {
     Tooltip, useTheme, useMediaQuery
 } from '@mui/material';
 import {
-    Edit, Close, Person, Phone, Email, Badge, Save, VpnKey,
-    VerifiedUser, Info, ArrowForwardIos, PhotoCamera,
-} from '@mui/icons-material';
-import { Lock as LockIcon } from '@mui/icons-material';
+    Edit2 as Edit,
+    CloseCircle as Close,
+    User as Person,
+    Call as Phone,
+    Sms as Email,
+    TickCircle as Save,
+    Key as VpnKey,
+    Verify as VerifiedUser,
+    InfoCircle as Info,
+    Camera as PhotoCamera,
+    Lock as LockIcon
+} from 'iconsax-react';
 import Toastify from 'toastify-js';
 import "toastify-js/src/toastify.css";
 import { useAppContext } from '../context/AppContext';
@@ -93,7 +101,7 @@ export default function Profile() {
                                         position: 'absolute', bottom: 10, right: 10,
                                         bgcolor: '#fff', boxShadow: 2, '&:hover': { bgcolor: '#f1f5f9' }
                                     }}>
-                                        <PhotoCamera sx={{ fontSize: 20, color: '#6366f1' }} />
+                                        <PhotoCamera size={20} color="#6366f1" />
                                     </IconButton>
                                 </Tooltip>
                             </Box>
@@ -103,7 +111,7 @@ export default function Profile() {
                                     {user.username}
                                 </Typography>
                                 <Stack direction="row" spacing={1} justifyContent={{ xs: 'center', md: 'flex-start' }} alignItems="center">
-                                    <VerifiedUser sx={{ fontSize: 16, color: '#10b981' }} />
+                                    <VerifiedUser size={16} color="#10b981" variant="Bold" />
                                     <Typography variant="body1" sx={{ color: isMobile ? "#64748b" : "#cbd5e1", fontWeight: 500 }}>
                                         {user.role || 'Staff Member'}
                                     </Typography>
@@ -136,7 +144,7 @@ export default function Profile() {
                                                 <Box sx={{
                                                     p: 1.5, borderRadius: 2, bgcolor: '#eff6ff', color: '#3b82f6'
                                                 }}>
-                                                    {item.icon}
+                                                    {React.cloneElement(item.icon, { size: 24 })}
                                                 </Box>
                                                 <Box>
                                                     <Typography variant="caption" sx={{ color: '#94a3b8', fontWeight: 600, textTransform: 'uppercase' }}>
@@ -193,7 +201,7 @@ export default function Profile() {
 
                                         <Box sx={{ p: 2, bgcolor: '#fff7ed', borderRadius: 1, border: '1px solid #fed7aa' }}>
                                             <Stack direction="row" spacing={1.5}>
-                                                <Info sx={{ color: '#ea580c' }} />
+                                                <Info color="#ea580c" size={20} />
                                                 <Typography variant="caption" color="#9a3412" fontWeight={500}>
                                                     Keep your credentials private. We will never ask for your password via email or phone.
                                                 </Typography>
@@ -232,7 +240,7 @@ export default function Profile() {
                                 <Button
                                     type="submit" fullWidth variant="contained"
                                     disabled={loading} sx={{ py: 1.5, borderRadius: 3, bgcolor: '#6366f1' }}
-                                    startIcon={loading ? <CircularProgress size={20} color="inherit" /> : <Save />}
+                                    startIcon={loading ? <CircularProgress size={20} color="inherit" /> : <Save variant="Bold" size={20} />}
                                 >
                                     Confirm Update
                                 </Button>
@@ -274,7 +282,7 @@ export default function Profile() {
                                 color: '#ef4444'
                             }}
                         >
-                            <VpnKey fontSize="small" />
+                            <VpnKey size={20} variant="Bold" color="#ef4444" />
                         </Box>
 
                         <Box>
@@ -313,7 +321,7 @@ export default function Profile() {
                                     InputProps={{
                                         startAdornment: (
                                             <InputAdornment position="start">
-                                                <LockIcon sx={{ color: '#94a3b8' }} />
+                                                <LockIcon color="#94a3b8" size={20} />
                                             </InputAdornment>
                                         )
                                     }}
@@ -330,7 +338,7 @@ export default function Profile() {
                                     InputProps={{
                                         startAdornment: (
                                             <InputAdornment position="start">
-                                                <LockIcon sx={{ color: '#94a3b8' }} />
+                                                <LockIcon color="#94a3b8" size={20} />
                                             </InputAdornment>
                                         )
                                     }}
@@ -347,7 +355,7 @@ export default function Profile() {
                                     InputProps={{
                                         startAdornment: (
                                             <InputAdornment position="start">
-                                                <LockIcon sx={{ color: '#94a3b8' }} />
+                                                <LockIcon color="#94a3b8" size={20} />
                                             </InputAdornment>
                                         )
                                     }}
@@ -363,7 +371,7 @@ export default function Profile() {
                                     startIcon={
                                         loading
                                             ? <CircularProgress size={20} color="inherit" />
-                                            : <VpnKey />
+                                            : <VpnKey variant="Bold" size={20} color="#fff" />
                                     }
                                     sx={{
                                         py: 1.5,
@@ -392,7 +400,7 @@ export default function Profile() {
                             }}
                         >
                             <Stack direction="row" spacing={1.5} alignItems="flex-start">
-                                <Info sx={{ color: '#ea580c', mt: '2px' }} />
+                                <Info color="#ea580c" size={16} style={{ marginTop: 2 }} />
                                 <Typography variant="caption" color="#9a3412" fontWeight={600}>
                                     For your safety, never reuse passwords from other platforms.
                                 </Typography>

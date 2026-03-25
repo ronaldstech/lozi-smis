@@ -52,7 +52,7 @@ const StatCard = ({ title, value, icon, color, loading, trend }) => (
         className="glass-premium"
         sx={{
             p: { xs: 2.5, md: 3 },
-            borderRadius: { xs: 0, md: '28px' },
+            borderRadius: { xs: '15px', md: '28px' },
             position: 'relative',
             overflow: 'hidden',
             transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -64,7 +64,8 @@ const StatCard = ({ title, value, icon, color, loading, trend }) => (
                     transform: 'scale(1.1) rotate(5deg)',
                     filter: 'brightness(1.1)'
                 }
-            }
+            },
+            width: { xs: '100%', md: 'auto' }
         }}
     >
         {/* Subtle mesh overlay for the card */}
@@ -199,7 +200,7 @@ function Dashboard() {
     });
 
     return (
-        <Box className="mesh-bg" sx={{ px: { xs: 0, md: 3 }, py: { xs: 2.5, md: 4 }, minHeight: '100vh' }}>
+        <Box className="mesh-bg" sx={{ px: { xs: 1, md: 3 }, py: { xs: 2.5, md: 4 }, minHeight: '100vh' }}>
             {/* Header */}
             <Stack
                 direction={{ xs: 'column', sm: 'row' }}
@@ -349,7 +350,7 @@ function Dashboard() {
                 </Grid>
 
                 {/* Quick Actions Grid */}
-                <Grid item xs={12} md={5}>
+                <Grid item xs={12} md={5} mt={{ xs: 4, md: 0 }}>
                     <Box sx={{ height: '100%' }}>
                         <Typography sx={{ fontWeight: 900, fontSize: '1.25rem', mb: 3, color: '#1e293b', letterSpacing: '-0.5px' }}>
                             Quick Commands

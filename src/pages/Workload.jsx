@@ -29,17 +29,17 @@ import {
     MenuItem
 } from '@mui/material';
 import {
-    Assignment as AssignmentIcon,
-    Groups as GroupsIcon,
-    CheckCircle as DoneIcon,
-    TrendingUp as ProgressIcon,
-    School as SchoolIcon,
-    Person as PersonIcon,
-    Search as SearchIcon,
+    Task as AssignmentIcon,
+    People as GroupsIcon,
+    TickCircle as DoneIcon,
+    TrendUp as ProgressIcon,
+    Buildings as SchoolIcon,
+    User as PersonIcon,
+    SearchNormal1 as SearchIcon,
     Refresh as RefreshIcon,
-    FilterList as FilterIcon,
-    Clear as ClearIcon
-} from '@mui/icons-material';
+    Filter as FilterIcon,
+    CloseCircle as ClearIcon
+} from 'iconsax-react';
 import { AppContext } from '../context/AppContext';
 
 import { API_URL } from '../config';
@@ -220,7 +220,7 @@ function Workload() {
                             Workload Intelligence
                         </Typography>
                         <Typography sx={{ color: '#64748b', fontSize: 13, display: 'flex', alignItems: 'center', gap: 1 }}>
-                            <SchoolIcon sx={{ fontSize: 16 }} />
+                            <SchoolIcon size={16} color="#64748b" />
                             Real-time grading progress and assignment distribution for {academic?.name || "current session"}.
                         </Typography>
                     </Box>
@@ -235,7 +235,7 @@ function Workload() {
                                 borderRadius: 3
                             }}
                         >
-                            <RefreshIcon sx={{ color: '#64748b', animation: loading ? 'spin 2s linear infinite' : 'none' }} />
+                            <RefreshIcon size={20} color="#64748b" className={loading ? 'spin' : ''} />
                         </IconButton>
                     </Tooltip>
                 </Box>
@@ -246,7 +246,7 @@ function Workload() {
                         <StatCard
                             title="Total Classes"
                             count={loading ? <Skeleton width={40} /> : stats.totalAssignments}
-                            icon={<AssignmentIcon />}
+                            icon={<AssignmentIcon size={28} color="#6366f1" />}
                             color="#6366f1"
                             subtitle="Total active allocations"
                         />
@@ -255,7 +255,7 @@ function Workload() {
                         <StatCard
                             title="Active Teachers"
                             count={loading ? <Skeleton width={40} /> : stats.activeTeachers}
-                            icon={<PersonIcon />}
+                            icon={<PersonIcon size={28} color="#3b82f6" />}
                             color="#3b82f6"
                             subtitle="Teaching this session"
                         />
@@ -264,7 +264,7 @@ function Workload() {
                         <StatCard
                             title="School Progress"
                             count={loading ? <Skeleton width={60} /> : `${stats.avgProgress}%`}
-                            icon={<ProgressIcon />}
+                            icon={<ProgressIcon size={28} color="#f59e0b" />}
                             color="#f59e0b"
                             subtitle="Average grading completion"
                         />
@@ -273,7 +273,7 @@ function Workload() {
                         <StatCard
                             title="Completed"
                             count={loading ? <Skeleton width={40} /> : stats.completedAssignments}
-                            icon={<DoneIcon />}
+                            icon={<DoneIcon size={28} color="#10b981" />}
                             color="#10b981"
                             subtitle="Ready for reports"
                         />
@@ -301,13 +301,13 @@ function Workload() {
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
-                                    <SearchIcon sx={{ color: '#94a3b8' }} />
+                                    <SearchIcon size={20} color="#94a3b8" />
                                 </InputAdornment>
                             ),
                             endAdornment: searchQuery && (
                                 <InputAdornment position="end">
                                     <IconButton size="small" onClick={() => setSearchQuery('')}>
-                                        <ClearIcon fontSize="small" />
+                                        <ClearIcon size={18} />
                                     </IconButton>
                                 </InputAdornment>
                             )

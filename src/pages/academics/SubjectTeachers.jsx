@@ -6,8 +6,8 @@ import {
     useTheme, useMediaQuery
 } from '@mui/material';
 import {
-    Settings as SettingsIcon, School as SchoolIcon
-} from '@mui/icons-material';
+    Setting3, Buildings2
+} from 'iconsax-react';
 import Toastify from 'toastify-js';
 import "toastify-js/src/toastify.css";
 
@@ -193,7 +193,7 @@ function SubjectTeachers({ readOnly = false }) {
                         Teacher Allocations
                     </Typography>
                     <Stack direction="row" spacing={1} alignItems="center" sx={{ mt: 0.5 }}>
-                        <SchoolIcon sx={{ fontSize: 16, color: '#6366f1' }} />
+                        <Buildings2 size={16} color="#6366f1" />
                         <Typography variant="body2" sx={{ color: '#64748b', fontWeight: 500 }}>
                             {academic.name} — Term {academic.term}
                         </Typography>
@@ -295,7 +295,7 @@ function SubjectTeachers({ readOnly = false }) {
                                                     }}
                                                     sx={{ color: '#6366f1', bgcolor: '#f5f3ff', '&:hover': { bgcolor: '#e0e7ff' } }}
                                                 >
-                                                    <SettingsIcon fontSize="small" />
+                                                    <Setting3 size={20} variant="Bold" />
                                                 </IconButton>
                                             </Tooltip>
                                         </TableCell>

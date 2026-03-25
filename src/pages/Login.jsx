@@ -14,11 +14,11 @@ import {
     CircularProgress
 } from '@mui/material';
 import {
-    Email as EmailIcon,
+    User as UserIcon,
     Lock as LockIcon,
-    Visibility,
-    VisibilityOff
-} from '@mui/icons-material';
+    Eye as Visibility,
+    EyeSlash as VisibilityOff
+} from 'iconsax-react';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
 
@@ -123,7 +123,7 @@ function Login() {
                                 'linear-gradient(135deg, #667eea, #764ba2)'
                         }}
                     >
-                        <LockIcon sx={{ color: '#fff', fontSize: 28 }} />
+                        <LockIcon color="#fff" size={28} variant="Bold" />
                     </Box>
 
                     <Typography variant="h5" fontWeight={800}>
@@ -150,7 +150,7 @@ function Login() {
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
-                                    <EmailIcon />
+                                    <UserIcon size={20} color="#94a3b8" />
                                 </InputAdornment>
                             ),
                             sx: { borderRadius: '12px' }
@@ -167,7 +167,7 @@ function Login() {
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
-                                    <LockIcon />
+                                    <LockIcon size={20} color="#94a3b8" />
                                 </InputAdornment>
                             ),
                             endAdornment: (
@@ -178,9 +178,9 @@ function Login() {
                                         }
                                     >
                                         {showPassword ? (
-                                            <VisibilityOff />
+                                            <VisibilityOff size={20} color="#94a3b8" />
                                         ) : (
-                                            <Visibility />
+                                            <Visibility size={20} color="#94a3b8" />
                                         )}
                                     </IconButton>
                                 </InputAdornment>

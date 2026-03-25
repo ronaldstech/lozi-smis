@@ -14,7 +14,10 @@ import {
     People,
     TickCircle,
     CloseCircle,
-    Profile
+    Profile,
+    SearchNormal1,
+    Trash,
+    Edit2
 } from 'iconsax-react';
 
 import Toastify from 'toastify-js';
@@ -33,40 +36,48 @@ import { API_URL } from '../../config';
 const StatCard = ({ title, count, icon, color }) => (
     <Paper
         elevation={0}
+        className="glass-premium"
         sx={{
             p: 3,
             borderRadius: '24px',
-            background: 'rgba(255, 255, 255, 0.7)',
-            backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255, 255, 255, 0.5)',
             display: 'flex',
             alignItems: 'center',
             gap: 2.5,
+            position: 'relative',
+            overflow: 'hidden',
             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             '&:hover': {
                 transform: 'translateY(-5px)',
-                background: 'rgba(255, 255, 255, 0.9)',
-                boxShadow: '0 20px 40px -10px rgba(0,0,0,0.08)'
+                '& .icon-box': { transform: 'scale(1.1) rotate(5deg)' }
             }
         }}
     >
         <Box
+            className="icon-box"
             sx={{
-                width: 52,
-                height: 52,
-                borderRadius: '16px',
+                width: 56,
+                height: 56,
+                borderRadius: '18px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                background: `linear-gradient(135deg, ${color} 0%, ${color}dd 100%)`,
+                background: `linear-gradient(135deg, ${color} 0%, ${color}aa 100%)`,
                 color: '#fff',
+                position: 'relative',
+                zIndex: 1,
+                transition: 'all 0.3s ease',
                 boxShadow: `0 8px 16px -4px ${color}40`,
             }}
         >
-            {React.cloneElement(icon, { size: 24, variant: "Bulk" })}
+            <Box sx={{
+                position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+                background: 'radial-gradient(circle at top left, rgba(255,255,255,0.3), transparent)',
+                borderRadius: 'inherit'
+            }} />
+            {icon}
         </Box>
 
-        <Box>
+        <Box sx={{ zIndex: 1 }}>
             <Typography
                 variant="caption"
                 sx={{
@@ -74,14 +85,15 @@ const StatCard = ({ title, count, icon, color }) => (
                     color: 'text.secondary',
                     letterSpacing: '0.05em',
                     textTransform: 'uppercase',
-                    fontSize: '0.65rem'
+                    fontSize: '0.65rem',
+                    opacity: 0.8
                 }}
             >
                 {title}
             </Typography>
             <Typography
                 variant="h5"
-                sx={{ fontWeight: 900, color: '#1e293b', letterSpacing: '-0.02em' }}
+                sx={{ fontWeight: 900, color: '#1e293b', letterSpacing: '-0.5px' }}
             >
                 {count}
             </Typography>
@@ -304,7 +316,7 @@ function StaffAdmin() {
                         <StatCard
                             title="Total Members"
                             count={totalStaff}
-                            icon={<People />}
+                            icon={<People size={28} variant="Bulk" />}
                             color="#6366f1"
                         />
                     </Grid>
@@ -312,7 +324,7 @@ function StaffAdmin() {
                         <StatCard
                             title="Active"
                             count={activeStaff}
-                            icon={<TickCircle />}
+                            icon={<TickCircle size={28} variant="Bulk" />}
                             color="#10b981"
                         />
                     </Grid>
@@ -320,7 +332,7 @@ function StaffAdmin() {
                         <StatCard
                             title="Inactive"
                             count={inactiveStaff}
-                            icon={<CloseCircle />}
+                            icon={<CloseCircle size={28} variant="Bulk" />}
                             color="#ef4444"
                         />
                     </Grid>

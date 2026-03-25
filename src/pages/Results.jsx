@@ -22,17 +22,17 @@ import {
     Chip
 } from '@mui/material';
 import {
-    Download as DownloadIcon,
-    Description as DescriptionIcon,
-    School as SchoolIcon,
-    Assignment as AssignmentIcon,
-    Analytics as AnalyticsIcon,
-    Info as InfoIcon,
-    Groups as GroupsIcon,
-    TrendingUp as ProgressIcon,
-    AutoGraph as AutoIcon,
-    WarningAmber as WarningIcon
-} from '@mui/icons-material';
+    DocumentDownload as DownloadIcon,
+    DocumentText as DescriptionIcon,
+    Buildings as SchoolIcon,
+    Task as AssignmentIcon,
+    PresentionChart as AnalyticsIcon,
+    InfoCircle as InfoIcon,
+    People as GroupsIcon,
+    Status as ProgressIcon,
+    Magicpen as AutoIcon,
+    Danger as WarningIcon
+} from 'iconsax-react';
 import { AppContext } from '../context/AppContext';
 
 import { API_URL } from '../config';
@@ -209,7 +209,7 @@ function Results() {
                             <Chip label="Live Engine" size="small" sx={{ bgcolor: '#6366f1', color: '#fff', fontWeight: 800, fontSize: '0.65rem' }} />
                         </Stack>
                         <Typography sx={{ color: '#64748b', fontSize: 13, display: 'flex', alignItems: 'center', gap: 1 }}>
-                            <SchoolIcon sx={{ fontSize: 16 }} />
+                            <SchoolIcon size={16} />
                             Best 6 subject compiler & report generator for {academic?.name || "current session"}.
                         </Typography>
                     </Box>
@@ -221,7 +221,7 @@ function Results() {
                             disabled={loading}
                             sx={{ borderRadius: 2, textTransform: 'none', borderColor: '#e2e8f0', color: '#64748b', bgcolor: '#fff' }}
                         >
-                            {loading ? <CircularProgress size={16} sx={{ mr: 1 }} /> : <ProgressIcon sx={{ fontSize: 16, mr: 1 }} />}
+                            {loading ? <CircularProgress size={16} sx={{ mr: 1 }} /> : <ProgressIcon size={16} style={{ marginRight: 8 }} />}
                             Sync
                         </Button>
                     </Tooltip>
@@ -233,7 +233,7 @@ function Results() {
                         <StatCard
                             title="Enrollment"
                             count={stats.studentCount}
-                            icon={<GroupsIcon />}
+                            icon={<GroupsIcon size={28} color="#6366f1" />}
                             color="#6366f1"
                             subtitle="Total students"
                             loading={loading}
@@ -243,7 +243,7 @@ function Results() {
                         <StatCard
                             title="Grading Engine"
                             count={`${stats.avgProgress}%`}
-                            icon={<AutoIcon />}
+                            icon={<AutoIcon size={28} color="#3b82f6" />}
                             color="#3b82f6"
                             subtitle="Overall input completion"
                             loading={loading}
@@ -253,7 +253,7 @@ function Results() {
                         <StatCard
                             title="Ready Batches"
                             count={`${stats.readyReports} / ${stats.totalClasses}`}
-                            icon={<AnalyticsIcon />}
+                            icon={<AnalyticsIcon size={28} color="#10b981" />}
                             color="#10b981"
                             subtitle="Classes at 100%"
                             loading={loading}
@@ -263,7 +263,7 @@ function Results() {
                         <StatCard
                             title="Calculation Type"
                             count={isSenior ? "Points (1-9)" : isJunior ? "Marks (0-100)" : "Select Form"}
-                            icon={<InfoIcon />}
+                            icon={<InfoIcon size={28} color="#f59e0b" />}
                             color="#f59e0b"
                             subtitle={isSenior ? "Senior Secondary Logic" : "Junior Secondary Logic"}
                             loading={loading}
@@ -307,7 +307,7 @@ function Results() {
                                                 color: '#0369a1'
                                             }}
                                         >
-                                            <DescriptionIcon />
+                                            <DescriptionIcon size={28} />
                                         </Box>
                                         <Box>
                                             <Typography variant="subtitle1" fontWeight={800} color="#1e293b">
@@ -371,7 +371,7 @@ function Results() {
 
                                     <Box sx={{ p: 2, bgcolor: '#f8fafc', borderRadius: 2, border: '1px dashed #e2e8f0' }}>
                                         <Typography variant="caption" sx={{ color: '#64748b', display: 'flex', alignItems: 'center', gap: 1 }}>
-                                            <InfoIcon sx={{ fontSize: 14 }} />
+                                            <InfoIcon size={14} />
                                             {isSenior ? "Senior logic active: Aggregating 5 best grades (1-9) + Compulsory English." :
                                                 isJunior ? "Junior logic active: Aggregating 5 best marks (0-100) + Compulsory English." :
                                                     "Select a form level to see calculation logic."}
@@ -382,7 +382,7 @@ function Results() {
                                         variant="contained"
                                         type="submit"
                                         size="large"
-                                        startIcon={<DownloadIcon />}
+                                        startIcon={<DownloadIcon size={20} />}
                                         disabled={!formData.form_select || !formData.type_select || processing}
                                         sx={{
                                             borderRadius: 4,

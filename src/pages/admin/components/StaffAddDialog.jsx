@@ -15,12 +15,12 @@ import {
     DialogTitle
 } from '@mui/material';
 import {
-    Close as CloseIcon,
-    Person as PersonIcon,
-    Phone as PhoneIcon,
-    Badge as BadgeIcon,
-    Save as SaveIcon
-} from '@mui/icons-material';
+    CloseCircle,
+    User,
+    Call,
+    AddCircle,
+    TickCircle
+} from 'iconsax-react';
 
 import Toastify from 'toastify-js';
 import "toastify-js/src/toastify.css";
@@ -94,7 +94,7 @@ const StaffAddDialog = ({ open, onClose, onSave }) => {
                     Add New Staff
                 </Typography>
                 <IconButton onClick={onClose} sx={{ color: '#94a3b8' }}>
-                    <CloseIcon />
+                    <CloseCircle size={24} />
                 </IconButton>
             </DialogTitle>
 
@@ -112,11 +112,7 @@ const StaffAddDialog = ({ open, onClose, onSave }) => {
                         required
                         sx={{ mb: 3 }}
                         InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    <PersonIcon sx={{ color: '#94a3b8' }} />
-                                </InputAdornment>
-                            ),
+                            startAdornment: <InputAdornment position="start" sx={{ ml: -0.5, mr: 1 }}><User size={18} color="#94a3b8" /></InputAdornment>
                         }}
                     />
 
@@ -131,7 +127,7 @@ const StaffAddDialog = ({ open, onClose, onSave }) => {
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
-                                    <PhoneIcon sx={{ color: '#94a3b8' }} />
+                                    <Call color="#94a3b8" size={18} />
                                 </InputAdornment>
                             ),
                         }}
@@ -148,7 +144,7 @@ const StaffAddDialog = ({ open, onClose, onSave }) => {
                             required
                             startAdornment={
                                 <InputAdornment position="start" sx={{ ml: -0.5, mr: 1 }}>
-                                    <BadgeIcon sx={{ color: '#94a3b8', fontSize: '1.2rem' }} />
+                                    <AddCircle size={18} color="#94a3b8" />
                                 </InputAdornment>
                             }
                         >
@@ -175,7 +171,7 @@ const StaffAddDialog = ({ open, onClose, onSave }) => {
                             type="submit"
                             variant="contained"
                             fullWidth
-                            startIcon={<SaveIcon />}
+                            startIcon={<TickCircle size={20} variant="Bold" />}
                             sx={{
                                 background: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)',
                                 boxShadow: '0 4px 12px rgba(79, 70, 229, 0.3)',

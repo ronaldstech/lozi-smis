@@ -292,9 +292,10 @@ function MainLayout({ children, menus }) {
                                 mr: 2,
                                 color: '#6366f1',
                                 bgcolor: 'rgba(99, 102, 241, 0.08)',
+                                borderRadius: '12px'
                             }}
                         >
-                            <HambergerMenu variant="Bold" size={24} />
+                            <HambergerMenu variant="Broken" size={24} color="#6366f1" />
                         </IconButton>
                         <Typography variant="h6" sx={{ color: '#1e293b', fontWeight: 800 }}>
                             {activeMenu}
@@ -355,7 +356,7 @@ function MainLayout({ children, menus }) {
                 component="main"
                 sx={{
                     flexGrow: 1,
-                    p: { xs: 0, md: 1 },
+                    p: { xs: 1, md: 1 },
                     width: { md: `calc(100% - 280px)` },
                     mt: { xs: 7, md: 0 },
                     height: '100vh',

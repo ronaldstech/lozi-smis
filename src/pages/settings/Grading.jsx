@@ -26,11 +26,11 @@ import {
     useMediaQuery
 } from '@mui/material';
 import {
-    Add as AddIcon,
-    Edit as EditIcon,
-    Close as CloseIcon,
-    Save as SaveIcon
-} from '@mui/icons-material';
+    AddCircle,
+    Edit2,
+    CloseCircle,
+    TickCircle
+} from 'iconsax-react';
 import Toastify from 'toastify-js';
 import "toastify-js/src/toastify.css";
 import { AppContext } from '../../context/AppContext';
@@ -134,7 +134,7 @@ function Grading() {
                 <Typography variant="h6" fontWeight={700}>Grading Scheme</Typography>
                 <Button
                     variant="contained"
-                    startIcon={<AddIcon />}
+                    startIcon={<AddCircle size={20} variant="Bold" />}
                     onClick={() => setOpen({ ...open, add: true })}
                     sx={{ borderRadius: 2, background: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)' }}
                 >
@@ -227,7 +227,7 @@ function Grading() {
             >
                 <Box sx={{ p: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #f1f5f9' }}>
                     <Typography variant="h6" fontWeight={700}>Add Grade Range</Typography>
-                    <IconButton size="small" onClick={() => setOpen({ ...open, add: false })}><CloseIcon /></IconButton>
+                    <IconButton size="small" onClick={() => setOpen({ ...open, add: false })}><CloseCircle size={20} /></IconButton>
                 </Box>
                 <form onSubmit={(e) => handleSave(e, 'add')} style={{ padding: 24 }}>
                     <Typography variant="caption" sx={{ color: '#ef4444', mb: 2, display: 'block' }}>Academic Name: {academic.name}</Typography>
@@ -269,7 +269,7 @@ function Grading() {
             >
                 <Box sx={{ p: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #f1f5f9' }}>
                     <Typography variant="h6" fontWeight={700}>Edit Grade</Typography>
-                    <IconButton size="small" onClick={() => setOpen({ ...open, edit: false })}><CloseIcon /></IconButton>
+                    <IconButton size="small" onClick={() => setOpen({ ...open, edit: false })}><CloseCircle size={20} /></IconButton>
                 </Box>
 
                 <form onSubmit={(e) => handleSave(e, 'edit')} style={{ padding: 24 }}>

@@ -29,13 +29,13 @@ import {
     useMediaQuery
 } from '@mui/material';
 import {
-    Add as AddIcon,
-    Edit as EditIcon,
-    Close as CloseIcon,
-    Save as SaveIcon,
-    Book as BookIcon,
-    Category as CategoryIcon
-} from '@mui/icons-material';
+    AddCircle,
+    Edit2,
+    CloseCircle,
+    TickCircle,
+    Book1,
+    Category
+} from 'iconsax-react';
 import Toastify from 'toastify-js';
 import "toastify-js/src/toastify.css";
 
@@ -142,7 +142,7 @@ function Subjects({ readOnly = false }) {
                 {!readOnly && (
                     <Button
                         variant="contained"
-                        startIcon={<AddIcon />}
+                        startIcon={<AddCircle size={20} variant="Bold" />}
                         onClick={() => setOpen({ ...open, add: true })}
                         sx={{
                             borderRadius: 1,
@@ -190,7 +190,7 @@ function Subjects({ readOnly = false }) {
                                             <Chip
                                                 label={row.root}
                                                 size="small"
-                                                icon={<CategoryIcon style={{ fontSize: 14 }} />}
+                                                icon={<Category size={14} />}
                                                 sx={{
                                                     textTransform: 'capitalize',
                                                     bgcolor: '#f1f5f9',
@@ -257,7 +257,7 @@ function Subjects({ readOnly = false }) {
             >
                 <Box sx={{ p: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #f1f5f9' }}>
                     <Typography variant="h6" fontWeight={700}>Add Subject</Typography>
-                    <IconButton onClick={() => setOpen({ ...open, add: false })} size="small"><CloseIcon /></IconButton>
+                    <IconButton onClick={() => setOpen({ ...open, add: false })} size="small"><CloseCircle size={20} /></IconButton>
                 </Box>
                 <form onSubmit={(e) => handleSave(e, 'add')}>
                     <Box sx={{ p: 3 }}>
@@ -269,7 +269,7 @@ function Subjects({ readOnly = false }) {
                             required
                             sx={{ mb: 3 }}
                             InputProps={{
-                                startAdornment: <InputAdornment position="start"><BookIcon color="action" /></InputAdornment>
+                                startAdornment: <InputAdornment position="start"><Book1 size={20} color="#94a3b8" /></InputAdornment>
                             }}
                         />
                         <FormControl fullWidth sx={{ mb: 1 }}>
@@ -304,7 +304,7 @@ function Subjects({ readOnly = false }) {
             >
                 <Box sx={{ p: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #f1f5f9' }}>
                     <Typography variant="h6" fontWeight={700}>Edit Subject</Typography>
-                    <IconButton onClick={() => setOpen({ ...open, edit: false })}><CloseIcon /></IconButton>
+                    <IconButton onClick={() => setOpen({ ...open, edit: false })}><CloseCircle size={20} /></IconButton>
                 </Box>
 
                 <form onSubmit={(e) => handleSave(e, 'edit')} style={{ padding: 24 }}>
@@ -357,7 +357,7 @@ function Subjects({ readOnly = false }) {
                         type="submit"
                         fullWidth
                         variant="contained"
-                        startIcon={<SaveIcon />}
+                        startIcon={<TickCircle size={20} variant="Bold" />}
                         sx={{
                             py: 1.5,
                             borderRadius: 2,

@@ -7,7 +7,7 @@ import {
     FormControlLabel,
     Alert
 } from '@mui/material';
-import { Settings as SettingsIcon } from '@mui/icons-material';
+import { Setting2 } from 'iconsax-react';
 
 import { API_URL } from '../../config';
 
@@ -58,7 +58,7 @@ function System() {
                     bgcolor: '#f1f5f9', color: '#475569',
                     display: 'flex', alignItems: 'center', justifyContent: 'center'
                 }}>
-                    <SettingsIcon />
+                    <Setting2 size={22} color="#475569" variant="Bold" />
                 </Box>
                 <Box>
                     <Typography variant="h6" fontWeight={700}>System Configuration</Typography>

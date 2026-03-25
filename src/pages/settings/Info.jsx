@@ -12,14 +12,14 @@ import {
     Divider
 } from '@mui/material';
 import {
-    Edit as EditIcon,
-    Close as CloseIcon,
-    Save as SaveIcon,
-    School as SchoolIcon,
-    LocationOn as LocationIcon,
-    Email as EmailIcon,
-    Phone as PhoneIcon
-} from '@mui/icons-material';
+    Edit2,
+    CloseCircle,
+    TickCircle,
+    Buildings2,
+    Location,
+    Sms,
+    Call
+} from 'iconsax-react';
 import Toastify from 'toastify-js';
 import "toastify-js/src/toastify.css";
 
@@ -100,7 +100,7 @@ function Info() {
                         <Typography variant="h6" fontWeight={700}>School Information</Typography>
                         <Button
                             variant="outlined"
-                            startIcon={<EditIcon />}
+                            startIcon={<Edit2 size={16} variant="Bold" />}
                             onClick={() => setUpdate({ ...update, edit: true })}
                             size="small"
                         >
@@ -109,10 +109,10 @@ function Info() {
                     </Box>
 
                     <Stack divider={<Divider flexItem sx={{ my: 2 }} />}>
-                        <DetailItem icon={<SchoolIcon />} label="School Name" value={info.name} />
-                        <DetailItem icon={<LocationIcon />} label="Address" value={info.address} />
-                        <DetailItem icon={<EmailIcon />} label="Email" value={info.email} />
-                        <DetailItem icon={<PhoneIcon />} label="Phone" value={info.phone} />
+                        <DetailItem icon={<Buildings2 size={20} />} label="School Name" value={info.name} />
+                        <DetailItem icon={<Location size={20} />} label="Address" value={info.address} />
+                        <DetailItem icon={<Sms size={20} />} label="Email" value={info.email} />
+                        <DetailItem icon={<Call size={20} />} label="Phone" value={info.phone} />
                     </Stack>
 
                     <Box sx={{ mt: 3, p: 3, bgcolor: '#f8fafc', borderRadius: 2 }}>
@@ -161,7 +161,7 @@ function Info() {
             >
                 <Box sx={{ p: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #f1f5f9' }}>
                     <Typography variant="h6" fontWeight={700}>Update School Info</Typography>
-                    <IconButton size="small" onClick={() => setUpdate({ ...update, edit: false })}><CloseIcon /></IconButton>
+                    <IconButton size="small" onClick={() => setUpdate({ ...update, edit: false })}><CloseCircle size={20} /></IconButton>
                 </Box>
 
                 <form onSubmit={updateInfo} style={{ padding: 24 }}>

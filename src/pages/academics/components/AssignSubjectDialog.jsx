@@ -4,11 +4,11 @@ import {
     Button, TextField, InputAdornment, IconButton, Fade, Divider
 } from '@mui/material';
 import {
-    Search as SearchIcon,
-    Close as CloseIcon,
-    MenuBook as BookIcon,
-    CheckCircle as CheckCircleIcon
-} from '@mui/icons-material';
+    SearchNormal1,
+    CloseCircle,
+    Book1,
+    TickCircle
+} from 'iconsax-react';
 
 function AssignSubjectDialog({ open, onClose, form, subjects, onSelect, onSave }) {
     const [searchQuery, setSearchQuery] = useState('');
@@ -45,7 +45,7 @@ function AssignSubjectDialog({ open, onClose, form, subjects, onSelect, onSave }
                         </Typography>
                     </Box>
                     <IconButton onClick={onClose} size="small" sx={{ color: '#94a3b8' }}>
-                        <CloseIcon fontSize="small" />
+                        <CloseCircle size={22} />
                     </IconButton>
                 </Box>
 
@@ -59,7 +59,7 @@ function AssignSubjectDialog({ open, onClose, form, subjects, onSelect, onSave }
                     InputProps={{
                         startAdornment: (
                             <InputAdornment position="start">
-                                <SearchIcon sx={{ fontSize: 20, color: '#94a3b8' }} />
+                                <SearchNormal1 size={20} color="#94a3b8" />
                             </InputAdornment>
                         ),
                         sx: {
@@ -99,13 +99,13 @@ function AssignSubjectDialog({ open, onClose, form, subjects, onSelect, onSave }
                                     <Checkbox
                                         onChange={() => onSelect(row)}
                                         size="small"
-                                        checkedIcon={<CheckCircleIcon />}
+                                        checkedIcon={<TickCircle size={20} color="#6366f1" />}
                                         sx={{ color: '#cbd5e1', '&.Mui-checked': { color: '#6366f1' } }}
                                     />
                                 }
                                 label={
                                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                                        <BookIcon sx={{ fontSize: 18, color: '#94a3b8' }} />
+                                        <Book1 size={18} color="#94a3b8" />
                                         <Typography variant="body2" sx={{ fontWeight: 600, color: '#334155' }}>
                                             {row.name}
                                         </Typography>

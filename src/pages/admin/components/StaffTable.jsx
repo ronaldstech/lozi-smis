@@ -21,9 +21,9 @@ import {
     Button
 } from '@mui/material';
 import {
-    Edit as EditIcon,
-    Search as SearchIcon
-} from '@mui/icons-material';
+    Edit2,
+    SearchNormal1
+} from 'iconsax-react';
 
 const StaffTable = ({
     rows = [],
@@ -82,7 +82,7 @@ const StaffTable = ({
                         maxWidth: 320
                     }}
                 >
-                    <SearchIcon sx={{ color: '#94a3b8' }} />
+                    <SearchNormal1 size={20} color="#94a3b8" />
                     <InputBase
                         fullWidth
                         placeholder="Search staff..."
@@ -209,29 +209,26 @@ const StaffTable = ({
                                     {!readOnly && (
                                         <TableCell align="right">
                                             <Tooltip title="Edit staff">
-                                                <Button
+                                                <IconButton
                                                     size="small"
-                                                    startIcon={<EditIcon sx={{ fontSize: '1rem !important' }} />}
                                                     onClick={() => onEditClick(row)}
                                                     sx={{
-                                                        color: '#4f46e5',
-                                                        fontWeight: 700,
-                                                        textTransform: 'none',
-                                                        borderRadius: '10px',
-                                                        px: 2,
-                                                        py: 0.5,
-                                                        backgroundColor: 'rgba(99, 102, 241, 0.08)',
+                                                        color: '#6366f1',
+                                                        bgcolor: 'rgba(99, 102, 241, 0.08)',
+                                                        borderRadius: '12px',
+                                                        width: 38, height: 38,
                                                         border: '1px solid rgba(99, 102, 241, 0.1)',
+                                                        transition: 'all 0.2s ease',
                                                         '&:hover': {
-                                                            backgroundColor: 'rgba(99, 102, 241, 0.15)',
-                                                            transform: 'translateY(-1px)',
-                                                            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
-                                                        },
-                                                        transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
+                                                            bgcolor: '#6366f1',
+                                                            color: '#fff',
+                                                            transform: 'translateY(-2px)',
+                                                            boxShadow: '0 8px 16px rgba(99, 102, 241, 0.2)'
+                                                        }
                                                     }}
                                                 >
-                                                    Edit
-                                                </Button>
+                                                    <Edit2 size={18} variant="Bold" color="#6366f1" />
+                                                </IconButton>
                                             </Tooltip>
                                         </TableCell>
                                     )}

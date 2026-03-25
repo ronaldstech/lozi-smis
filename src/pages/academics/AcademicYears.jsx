@@ -24,15 +24,15 @@ import {
     Avatar, Chip
 } from '@mui/material';
 import {
-    Add as AddIcon,
-    Edit as EditIcon,
-    Close as CloseIcon,
-    Save as SaveIcon,
-    CalendarMonth as CalendarIcon,
-    Event as EventIcon,
-    MonetizationOn as MoneyIcon,
-    ListAlt as ListIcon
-} from '@mui/icons-material';
+    AddCircle,
+    Edit2,
+    CloseCircle,
+    TickCircle,
+    CalendarEdit,
+    Calendar,
+    Money2,
+    Note1
+} from 'iconsax-react';
 import Toastify from 'toastify-js';
 import "toastify-js/src/toastify.css";
 
@@ -136,7 +136,7 @@ function AcademicYears({ readOnly = false }) {
                 {!readOnly && (
                     <Button
                         variant="contained"
-                        startIcon={<AddIcon />}
+                        startIcon={<AddCircle size={20} variant="Bold" />}
                         onClick={() => setOpen({ ...open, add: true })}
                         sx={{
                             borderRadius: 1,
@@ -246,7 +246,7 @@ function AcademicYears({ readOnly = false }) {
             >
                 <Box sx={{ p: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #f1f5f9' }}>
                     <Typography variant="h6" fontWeight={700}>Add Academic Year</Typography>
-                    <IconButton onClick={() => setOpen({ ...open, add: false })} size="small"><CloseIcon /></IconButton>
+                    <IconButton onClick={() => setOpen({ ...open, add: false })} size="small"><CloseCircle size={20} /></IconButton>
                 </Box>
                 <form onSubmit={(e) => handleSave(e, 'add')}>
                     <Box sx={{ p: 3, maxHeight: '60vh', overflowY: 'auto' }}>
@@ -254,13 +254,13 @@ function AcademicYears({ readOnly = false }) {
                             label="Academic Year (e.g. 2024-2025)"
                             name="academic_year"
                             fullWidth size="small" sx={{ mb: 2 }}
-                            InputProps={{ startAdornment: <InputAdornment position="start"><CalendarIcon fontSize="small" /></InputAdornment> }}
+                            InputProps={{ startAdornment: <InputAdornment position="start"><CalendarEdit size={18} color="#94a3b8" /></InputAdornment> }}
                         />
                         <TextField
                             label="Term (e.g. Term 1)"
                             name="term"
                             fullWidth size="small" sx={{ mb: 2 }}
-                            InputProps={{ startAdornment: <InputAdornment position="start"><EventIcon fontSize="small" /></InputAdornment> }}
+                            InputProps={{ startAdornment: <InputAdornment position="start"><Calendar size={18} color="#94a3b8" /></InputAdornment> }}
                         />
 
                         <Typography variant="caption" sx={{ color: '#64748b', mb: 1, display: 'block' }}>Key Dates</Typography>
@@ -274,14 +274,14 @@ function AcademicYears({ readOnly = false }) {
                             label="Fees"
                             name="fees"
                             fullWidth size="small" sx={{ mb: 2 }}
-                            InputProps={{ startAdornment: <InputAdornment position="start"><MoneyIcon fontSize="small" /></InputAdornment> }}
+                            InputProps={{ startAdornment: <InputAdornment position="start"><Money2 size={18} color="#94a3b8" /></InputAdornment> }}
                         />
                         <TextField
                             label="Requirements"
                             name="school_requirements"
                             multiline rows={2}
                             fullWidth size="small"
-                            InputProps={{ startAdornment: <InputAdornment position="start"><ListIcon fontSize="small" /></InputAdornment> }}
+                            InputProps={{ startAdornment: <InputAdornment position="start"><Note1 size={18} color="#94a3b8" /></InputAdornment> }}
                         />
                     </Box>
                     <Box sx={{ p: 3, pt: 0, display: 'flex', gap: 2 }}>
@@ -300,7 +300,7 @@ function AcademicYears({ readOnly = false }) {
             >
                 <Box sx={{ p: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #f1f5f9' }}>
                     <Typography variant="h6" fontWeight={700}>Edit Academic Year</Typography>
-                    <IconButton onClick={() => setOpen({ ...open, edit: false })}><CloseIcon /></IconButton>
+                    <IconButton onClick={() => setOpen({ ...open, edit: false })}><CloseCircle size={20} /></IconButton>
                 </Box>
 
                 <form onSubmit={(e) => handleSave(e, 'edit')} style={{ padding: 24, overflowY: 'auto', flexGrow: 1 }}>

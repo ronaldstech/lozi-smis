@@ -18,13 +18,13 @@ import {
     InputAdornment
 } from '@mui/material';
 import {
-    Close as CloseIcon,
-    Person as PersonIcon,
-    Phone as PhoneIcon,
-    Security as SecurityIcon,
-    Save as SaveIcon,
-    CloudUpload as UploadIcon
-} from '@mui/icons-material';
+    CloseCircle,
+    User,
+    Call,
+    Shield,
+    TickCircle,
+    Camera
+} from 'iconsax-react';
 
 const StaffEditDrawer = ({ open, onClose, activeStaff, onUpdate, onActivate }) => {
     const [localActive, setLocalActive] = useState({});
@@ -58,7 +58,7 @@ const StaffEditDrawer = ({ open, onClose, activeStaff, onUpdate, onActivate }) =
                     Staff Profile
                 </Typography>
                 <IconButton onClick={onClose} size="small" sx={{ bgcolor: '#f8fafc' }}>
-                    <CloseIcon fontSize="small" />
+                    <CloseCircle size={20} />
                 </IconButton>
             </Box>
 
@@ -92,7 +92,7 @@ const StaffEditDrawer = ({ open, onClose, activeStaff, onUpdate, onActivate }) =
                             '&:hover': { bgcolor: '#4f46e5' }
                         }}
                     >
-                        <UploadIcon sx={{ fontSize: 16 }} />
+                        <Camera size={16} />
                     </IconButton>
                 </Box>
                 <Typography variant="h6" sx={{ fontWeight: 700 }}>
@@ -120,7 +120,7 @@ const StaffEditDrawer = ({ open, onClose, activeStaff, onUpdate, onActivate }) =
                     <Stack spacing={3}>
                         <Box>
                             <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
-                                <PersonIcon sx={{ color: '#6366f1', fontSize: 20 }} />
+                                <User size={20} color="#6366f1" variant="Bulk" />
                                 <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#475569' }}>
                                     Basic Information
                                 </Typography>
@@ -145,14 +145,14 @@ const StaffEditDrawer = ({ open, onClose, activeStaff, onUpdate, onActivate }) =
                                 value={localActive.phone || ''}
                                 onChange={e => setLocalActive({ ...localActive, phone: e.target.value })}
                                 InputProps={{
-                                    startAdornment: <InputAdornment position="start"><PhoneIcon fontSize="small" /></InputAdornment>,
+                                    startAdornment: <InputAdornment position="start"><Call size={18} color="#94a3b8" /></InputAdornment>,
                                 }}
                             />
                         </Box>
 
                         <Box>
                             <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
-                                <SecurityIcon sx={{ color: '#6366f1', fontSize: 20 }} />
+                                <Shield size={20} color="#6366f1" variant="Bulk" />
                                 <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#475569' }}>
                                     Access Control
                                 </Typography>
@@ -224,7 +224,7 @@ const StaffEditDrawer = ({ open, onClose, activeStaff, onUpdate, onActivate }) =
                             type="submit"
                             variant="contained"
                             fullWidth
-                            startIcon={<SaveIcon />}
+                            startIcon={<TickCircle size={20} variant="Bulk" />}
                             sx={{
                                 borderRadius: 2,
                                 textTransform: 'none',

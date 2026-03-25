@@ -10,10 +10,10 @@ import {
     useMediaQuery
 } from '@mui/material';
 import {
-    AutoStories as SubjectsIcon, // More relevant icon
-    AssignmentInd as TeacherIcon,
-    EventAvailable as YearIcon
-} from '@mui/icons-material';
+    Book as SubjectsIcon,
+    Profile2User as TeacherIcon,
+    Calendar as YearIcon
+} from 'iconsax-react';
 import Subjects from './academics/Subjects';
 import SubjectTeachers from './academics/SubjectTeachers';
 import AcademicYears from './academics/AcademicYears';
@@ -137,9 +137,9 @@ function Academics() {
                                 }
                             }}
                         >
-                            <Tab icon={<TeacherIcon sx={{ fontSize: 20 }} />} iconPosition="start" label="Teacher Allocations" />
-                            <Tab icon={<SubjectsIcon sx={{ fontSize: 20 }} />} iconPosition="start" label="Subject Curriculum" />
-                            <Tab icon={<YearIcon sx={{ fontSize: 20 }} />} iconPosition="start" label="Academic Sessions" />
+                            <Tab icon={<TeacherIcon size={20} color="#64748b" />} iconPosition="start" label="Teacher Allocations" />
+                            <Tab icon={<SubjectsIcon size={20} color="#64748b" />} iconPosition="start" label="Subject Curriculum" />
+                            <Tab icon={<YearIcon size={20} color="#64748b" />} iconPosition="start" label="Academic Sessions" />
                         </Tabs>
                     </Box>
 

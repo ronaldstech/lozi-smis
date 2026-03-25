@@ -9,7 +9,7 @@ import {
     DialogActions,
     IconButton
 } from '@mui/material';
-import { Close as CloseIcon, Warning as WarningIcon } from '@mui/icons-material';
+import { CloseCircle, Danger } from 'iconsax-react';
 
 const StudentDeleteDialog = ({ open, onClose, onConfirm, studentName }) => {
     return (
@@ -25,7 +25,7 @@ const StudentDeleteDialog = ({ open, onClose, onConfirm, studentName }) => {
             <DialogTitle sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', pb: 1 }}>
                 <Typography variant="h6" fontWeight={700}>Confirm Delete</Typography>
                 <IconButton onClick={onClose} size="small">
-                    <CloseIcon />
+                    <CloseCircle size={20} />
                 </IconButton>
             </DialogTitle>
 
@@ -42,7 +42,7 @@ const StudentDeleteDialog = ({ open, onClose, onConfirm, studentName }) => {
                     mx: 'auto',
                     mb: 2
                 }}>
-                    <WarningIcon fontSize="large" />
+                    <Danger size={32} variant="Bulk" color="#dc2626" />
                 </Box>
                 <Typography variant="body1" sx={{ color: '#1e293b', fontWeight: 600, mb: 1 }}>
                     Are you sure you want to delete <br />

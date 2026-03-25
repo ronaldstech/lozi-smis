@@ -19,14 +19,15 @@ import {
     Chip
 } from '@mui/material';
 import {
-    Close as CloseIcon,
-    Person as PersonIcon,
-    School as SchoolIcon,
-    Transgender as GenderIcon,
-    Save as SaveIcon,
-    CloudUpload as UploadIcon,
-    Badge as BadgeIcon
-} from '@mui/icons-material';
+    CloseCircle,
+    User,
+    Teacher,
+    Buildings,
+    TickCircle,
+    CloseCircle as DeactivateIcon,
+    Trash,
+    Camera
+} from 'iconsax-react';
 
 const StudentEditDrawer = ({ open, onClose, activeStudent, onUpdate, onActivate }) => {
     const { schoolType } = useAppContext();
@@ -61,7 +62,7 @@ const StudentEditDrawer = ({ open, onClose, activeStudent, onUpdate, onActivate 
                     Student Profile
                 </Typography>
                 <IconButton onClick={onClose} size="small" sx={{ bgcolor: '#f8fafc' }}>
-                    <CloseIcon fontSize="small" />
+                    <CloseCircle size={24} />
                 </IconButton>
             </Box>
 
@@ -95,7 +96,7 @@ const StudentEditDrawer = ({ open, onClose, activeStudent, onUpdate, onActivate 
                             '&:hover': { bgcolor: '#4f46e5' }
                         }}
                     >
-                        <UploadIcon sx={{ fontSize: 16 }} />
+                        <Camera size={16} />
                     </IconButton>
                 </Box>
                 <Typography variant="h6" sx={{ fontWeight: 700 }}>
@@ -123,7 +124,7 @@ const StudentEditDrawer = ({ open, onClose, activeStudent, onUpdate, onActivate 
                     <Stack spacing={3}>
                         <Box>
                             <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
-                                <PersonIcon sx={{ color: '#6366f1', fontSize: 20 }} />
+                                <User size={28} variant="Bulk" />
                                 <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#475569' }}>
                                     Personal Details
                                 </Typography>
@@ -163,7 +164,7 @@ const StudentEditDrawer = ({ open, onClose, activeStudent, onUpdate, onActivate 
 
                         <Box>
                             <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
-                                <SchoolIcon sx={{ color: '#6366f1', fontSize: 20 }} />
+                                <Teacher size={20} color="#6366f1" variant="Bulk" />
                                 <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#475569' }}>
                                     Academic Info
                                 </Typography>
@@ -196,7 +197,7 @@ const StudentEditDrawer = ({ open, onClose, activeStudent, onUpdate, onActivate 
                                 disabled
                                 sx={{ mb: 2 }}
                                 InputProps={{
-                                    startAdornment: <InputAdornment position="start"><SchoolIcon fontSize="small" /></InputAdornment>,
+                                    startAdornment: <InputAdornment position="start"><User size={18} color="#94a3b8" /></InputAdornment>,
                                 }}
                             />
                             <input type="hidden" name="school" value={localActive.school || schoolType} />
@@ -211,14 +212,14 @@ const StudentEditDrawer = ({ open, onClose, activeStudent, onUpdate, onActivate 
                                 fullWidth
                                 sx={{ mb: 2 }}
                                 InputProps={{
-                                    startAdornment: <InputAdornment position="start"><BadgeIcon fontSize="small" /></InputAdornment>,
+                                    startAdornment: <InputAdornment position="start" sx={{ ml: -0.5, mr: 1 }}><User size={18} color="#94a3b8" /></InputAdornment>,
                                 }}
                             />
                         </Box>
 
                         <Box>
                             <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
-                                <GenderIcon sx={{ color: '#6366f1', fontSize: 20 }} />
+                                <User size={20} color="#6366f1" variant="Bulk" />
                                 <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#475569' }}>
                                     Other
                                 </Typography>
@@ -292,7 +293,7 @@ const StudentEditDrawer = ({ open, onClose, activeStudent, onUpdate, onActivate 
                             type="submit"
                             variant="contained"
                             fullWidth
-                            startIcon={<SaveIcon />}
+                            startIcon={<TickCircle size={20} variant="Bold" />}
                             sx={{
                                 borderRadius: 2,
                                 textTransform: 'none',

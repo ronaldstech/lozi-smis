@@ -16,13 +16,13 @@ import {
     Divider
 } from '@mui/material';
 import {
-    Close as CloseIcon,
-    Person as PersonIcon,
-    School as SchoolIcon,
-    Transgender as GenderIcon,
-    Save as SaveIcon,
-    AddCircleOutline as AddIcon
-} from '@mui/icons-material';
+    CloseCircle,
+    User,
+    Teacher,
+    Buildings,
+    TickCircle,
+    AddCircle
+} from 'iconsax-react';
 
 const StudentAddDialog = ({ open, onClose, onSave }) => {
     const { schoolType } = useAppContext();
@@ -91,7 +91,7 @@ const StudentAddDialog = ({ open, onClose, onSave }) => {
                             justifyContent: 'center',
                             boxShadow: '0 8px 16px rgba(99, 102, 241, 0.2)'
                         }}>
-                            <AddIcon />
+                            <AddCircle size={28} variant="Bulk" />
                         </Box>
                         <Box>
                             <Typography variant="h6" sx={{ fontWeight: 800, color: '#1e293b', lineHeight: 1.2 }}>
@@ -110,7 +110,7 @@ const StudentAddDialog = ({ open, onClose, onSave }) => {
                             transition: 'all 0.2s'
                         }}
                     >
-                        <CloseIcon />
+                        <CloseCircle size={24} />
                     </IconButton>
                 </Box>
 
@@ -137,7 +137,7 @@ const StudentAddDialog = ({ open, onClose, onSave }) => {
                                 required
                                 sx={{ '& .MuiOutlinedInput-root': { borderRadius: 3 } }}
                                 InputProps={{
-                                    startAdornment: <InputAdornment position="start"><PersonIcon fontSize="small" sx={{ color: '#94a3b8' }} /></InputAdornment>
+                                    startAdornment: <InputAdornment position="start"><User size={18} color="#94a3b8" /></InputAdornment>
                                 }}
                             />
                             <TextField
@@ -146,7 +146,7 @@ const StudentAddDialog = ({ open, onClose, onSave }) => {
                                 fullWidth
                                 sx={{ '& .MuiOutlinedInput-root': { borderRadius: 3 } }}
                                 InputProps={{
-                                    startAdornment: <InputAdornment position="start"><PersonIcon fontSize="small" sx={{ color: '#94a3b8' }} /></InputAdornment>
+                                    startAdornment: <InputAdornment position="start"><User size={18} color="#94a3b8" /></InputAdornment>
                                 }}
                             />
                             <TextField
@@ -156,7 +156,7 @@ const StudentAddDialog = ({ open, onClose, onSave }) => {
                                 required
                                 sx={{ '& .MuiOutlinedInput-root': { borderRadius: 3 } }}
                                 InputProps={{
-                                    startAdornment: <InputAdornment position="start"><PersonIcon fontSize="small" sx={{ color: '#94a3b8' }} /></InputAdornment>
+                                    startAdornment: <InputAdornment position="start"><User size={18} color="#94a3b8" /></InputAdornment>
                                 }}
                             />
                         </Stack>
@@ -175,7 +175,7 @@ const StudentAddDialog = ({ open, onClose, onSave }) => {
                                 disabled
                                 sx={{ '& .MuiOutlinedInput-root': { borderRadius: 3, bgcolor: '#f8fafc' } }}
                                 InputProps={{
-                                    startAdornment: <InputAdornment position="start"><SchoolIcon fontSize="small" sx={{ color: '#94a3b8' }} /></InputAdornment>
+                                    startAdornment: <InputAdornment position="start"><Buildings size={18} color="#94a3b8" /></InputAdornment>
                                 }}
                             />
                             <input type="hidden" name="school" value={schoolType} />
@@ -190,7 +190,7 @@ const StudentAddDialog = ({ open, onClose, onSave }) => {
                                     onChange={handleFormChange}
                                     required
                                     sx={{ borderRadius: 3 }}
-                                    startAdornment={<InputAdornment position="start" sx={{ ml: -0.5, mr: 1 }}><SchoolIcon fontSize="small" sx={{ color: '#94a3b8' }} /></InputAdornment>}
+                                    startAdornment={<InputAdornment position="start" sx={{ ml: -0.5, mr: 1 }}><Teacher size={18} color="#94a3b8" /></InputAdornment>}
                                 >
                                     <MenuItem value={1}>Form 1</MenuItem>
                                     <MenuItem value={2}>Form 2</MenuItem>
@@ -209,7 +209,7 @@ const StudentAddDialog = ({ open, onClose, onSave }) => {
                                     onChange={handleGenderChange}
                                     required
                                     sx={{ borderRadius: 3 }}
-                                    startAdornment={<InputAdornment position="start" sx={{ ml: -0.5, mr: 1 }}><GenderIcon fontSize="small" sx={{ color: '#94a3b8' }} /></InputAdornment>}
+                                    startAdornment={<InputAdornment position="start" sx={{ ml: -0.5, mr: 1 }}><User size={18} color="#94a3b8" /></InputAdornment>}
                                 >
                                     <MenuItem value="male">Male</MenuItem>
                                     <MenuItem value="female">Female</MenuItem>
@@ -249,7 +249,7 @@ const StudentAddDialog = ({ open, onClose, onSave }) => {
                         type="submit"
                         variant="contained"
                         fullWidth
-                        startIcon={<SaveIcon />}
+                        startIcon={<TickCircle size={20} variant="Bold" />}
                         sx={{
                             background: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)',
                             boxShadow: '0 8px 20px rgba(79, 70, 229, 0.3)',

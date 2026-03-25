@@ -9,10 +9,10 @@ import {
 } from '@mui/material';
 import {
     Home as HomeIcon,
-    Bookmarks as BookmarksIcon,
-    Settings as SettingsIcon,
-    Sort as SortIcon
-} from '@mui/icons-material';
+    Book as BookmarksIcon,
+    Setting2 as SettingsIcon,
+    Category as SortIcon
+} from 'iconsax-react';
 import Grading from './settings/Grading';
 import Info from './settings/Info';
 import System from './settings/System';
@@ -58,9 +58,9 @@ function Settings() {
                         }
                     }}
                 >
-                    <Tab icon={<SortIcon fontSize="small" />} iconPosition="start" label="Grading System" />
-                    <Tab icon={<BookmarksIcon fontSize="small" />} iconPosition="start" label="School Info" />
-                    <Tab icon={<SettingsIcon fontSize="small" />} iconPosition="start" label="System Config" />
+                    <Tab icon={<SortIcon size={20} />} iconPosition="start" label="Grading System" />
+                    <Tab icon={<BookmarksIcon size={20} />} iconPosition="start" label="School Info" />
+                    <Tab icon={<SettingsIcon size={20} />} iconPosition="start" label="System Config" />
                 </Tabs>
             </Box>
 
