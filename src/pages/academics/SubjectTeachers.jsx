@@ -2,11 +2,11 @@ import React, { useState, useEffect, useContext } from 'react';
 import { AppContext } from '../../context/AppContext';
 import {
     Box, Typography, Table, TableHead, TableRow, TableCell,
-    TableBody, Stack, Paper, TableContainer, IconButton, Chip, Avatar, Tooltip, LinearProgress,
+    TableBody, Stack, Paper, TableContainer, Button, Chip, Avatar, Tooltip, LinearProgress,
     useTheme, useMediaQuery
 } from '@mui/material';
 import {
-    Setting3, Buildings2
+    Edit2, Buildings2
 } from 'iconsax-react';
 import Toastify from 'toastify-js';
 import "toastify-js/src/toastify.css";
@@ -287,16 +287,18 @@ function SubjectTeachers({ readOnly = false }) {
                                     {!readOnly && (
                                         <TableCell align="right">
                                             <Tooltip title="Manage Schedule">
-                                                <IconButton
+                                                <Button
+                                                    size="small"
+                                                    variant="contained"
                                                     onClick={() => {
                                                         setManage(row);
                                                         setOpen({ ...open, add: true });
                                                         getSubt(row.id, academic.id);
                                                     }}
-                                                    sx={{ color: '#6366f1', bgcolor: '#f5f3ff', '&:hover': { bgcolor: '#e0e7ff' } }}
+                                                    sx={{ textTransform: 'none', borderRadius: '8px', bgcolor: '#6366f1', '&:hover': { bgcolor: '#4f46e5' } }}
                                                 >
-                                                    <Setting3 size={20} variant="Bold" />
-                                                </IconButton>
+                                                    Assign
+                                                </Button>
                                             </Tooltip>
                                         </TableCell>
                                     )}

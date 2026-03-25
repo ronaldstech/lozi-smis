@@ -52,7 +52,7 @@ const StaffTable = ({
         <Paper
             elevation={0}
             sx={{
-                borderRadius: 2,
+                borderRadius: '14px',
                 border: '1px solid #e2e8f0',
                 overflow: 'hidden'
             }}
@@ -60,8 +60,8 @@ const StaffTable = ({
             {/* ================= SEARCH ================= */}
             <Box
                 sx={{
-                    px: 2,
-                    py: 1.5,
+                    px: 1,
+                    py: 1,
                     borderBottom: '1px solid #e2e8f0',
                     backgroundColor: '#f8fafc',
                     display: 'flex',
@@ -73,7 +73,7 @@ const StaffTable = ({
                         display: 'flex',
                         alignItems: 'center',
                         gap: 1,
-                        px: 2,
+                        px: 1,
                         py: 0.8,
                         borderRadius: 2,
                         backgroundColor: '#ffffff',
@@ -161,7 +161,7 @@ const StaffTable = ({
                                         <TableCell>
                                             <Avatar
                                                 src={`/images/profile.jpg`}
-                                                sx={{ width: 36, height: 36 }}
+                                                sx={{ width: 30, height: 30 }}
                                             />
                                         </TableCell>
                                     )}
@@ -216,7 +216,7 @@ const StaffTable = ({
                                                         color: '#6366f1',
                                                         bgcolor: 'rgba(99, 102, 241, 0.08)',
                                                         borderRadius: '12px',
-                                                        width: 38, height: 38,
+                                                        width: 30, height: 30,
                                                         border: '1px solid rgba(99, 102, 241, 0.1)',
                                                         transition: 'all 0.2s ease',
                                                         '&:hover': {
@@ -227,7 +227,7 @@ const StaffTable = ({
                                                         }
                                                     }}
                                                 >
-                                                    <Edit2 size={18} variant="Bold" color="#6366f1" />
+                                                    <Edit2 size={15} variant="Bold" color="#6366f1" />
                                                 </IconButton>
                                             </Tooltip>
                                         </TableCell>

@@ -38,8 +38,8 @@ const StatCard = ({ title, count, icon, color }) => (
         elevation={0}
         className="glass-premium"
         sx={{
-            p: 3,
-            borderRadius: '24px',
+            p: 1,
+            borderRadius: '14px',
             display: 'flex',
             alignItems: 'center',
             gap: 2.5,
@@ -55,8 +55,8 @@ const StatCard = ({ title, count, icon, color }) => (
         <Box
             className="icon-box"
             sx={{
-                width: 56,
-                height: 56,
+                width: 40,
+                height: 40,
                 borderRadius: '18px',
                 display: 'flex',
                 alignItems: 'center',
@@ -234,8 +234,8 @@ function StaffAdmin() {
                         top: 0,
                         zIndex: 1100,
                         mb: { xs: 2, md: 4 },
-                        p: { xs: 2.5, md: 3.5 },
-                        borderRadius: '24px',
+                        p: { xs: 1, md: 2 },
+                        borderRadius: '14px',
                         border: '1px solid rgba(255, 255, 255, 0.4)',
                         background: 'rgba(255, 255, 255, 0.6)',
                         backdropFilter: 'blur(20px)',
@@ -250,8 +250,8 @@ function StaffAdmin() {
                         <Box>
                             <Typography
                                 sx={{
-                                    fontSize: { xs: '1.25rem', md: '1.75rem' },
-                                    fontWeight: 900,
+                                    fontSize: { xs: '1rem', md: '1.25rem' },
+                                    fontWeight: 800,
                                     color: '#0f172a'
                                 }}
                             >
@@ -264,19 +264,17 @@ function StaffAdmin() {
 
                         <Stack
                             direction={{ xs: 'column', sm: 'row' }}
-                            spacing={1}
+                            spacing={2}
                         >
                             <Button
-                                fullWidth
                                 variant="outlined"
-                                startIcon={<ExportCurve size={20} />}
                                 onClick={() => window.print()}
                                 sx={{
-                                    borderRadius: '16px',
+                                    borderRadius: '14px',
                                     textTransform: 'none',
+                                    px: 3,
+                                    whiteSpace: 'nowrap',
                                     borderColor: 'rgba(99, 102, 241, 0.2)',
-                                    fontWeight: 700,
-                                    height: 48,
                                     '&:hover': {
                                         borderColor: '#6366f1',
                                         bgcolor: 'rgba(99, 102, 241, 0.05)'
@@ -288,16 +286,13 @@ function StaffAdmin() {
 
                             {!isReadOnly && (
                                 <Button
-                                    fullWidth
                                     variant="contained"
-                                    startIcon={<UserAdd size={20} />}
                                     onClick={() => setOpen({ ...open, add: true })}
                                     sx={{
-                                        borderRadius: '16px',
+                                        borderRadius: '14px',
                                         textTransform: 'none',
-                                        px: 4,
-                                        height: 48,
-                                        fontWeight: 700,
+                                        px: 3,
+                                        whiteSpace: 'nowrap',
                                         background: 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)',
                                         boxShadow: '0 10px 20px -5px rgba(99, 102, 241, 0.4)',
                                     }}
@@ -311,7 +306,7 @@ function StaffAdmin() {
 
 
                 {/* ================= STATS ================= */}
-                <Grid container spacing={{ xs: 1, md: 2 }} sx={{ mb: { xs: 2, md: 4 } }}>
+                <Grid container spacing={{ xs: 1, md: 2 }} sx={{ mb: { xs: 1, md: 2 } }}>
                     <Grid item xs={12} sm={4}>
                         <StatCard
                             title="Total Members"
@@ -342,7 +337,7 @@ function StaffAdmin() {
                 <Paper
                     elevation={0}
                     sx={{
-                        borderRadius: '24px',
+                        borderRadius: '14px',
                         border: '1px solid rgba(0,0,0,0.05)',
                         overflow: 'hidden',
                         background: 'rgba(255, 255, 255, 0.6)',
