@@ -44,8 +44,8 @@ const StatCard = ({ title, count, icon, color, subtitle, loading }) => (
     <Paper
         elevation={0}
         sx={{
-            p: 2.5,
-            borderRadius: 4,
+            p: 1,
+            borderRadius: '14px',
             border: '1px solid #e2e8f0',
             height: '100%',
             transition: 'all .3s ease',
@@ -199,36 +199,74 @@ function Results() {
                 minHeight: '100vh',
                 bgcolor: '#f8fafc'
             }}>
-                {/* Header Section */}
-                <Box sx={{ mb: 4, px: { xs: 1, md: 0 }, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                    <Box>
-                        <Stack direction="row" spacing={1} alignItems="center">
-                            <Typography variant="h5" sx={{ fontWeight: 900, color: '#0f172a', letterSpacing: '-0.5px' }}>
-                                Results Analyst
+                <Paper
+                    elevation={0}
+                    sx={{
+                        position: { xs: 'relative', md: 'sticky' },
+                        top: 0,
+                        zIndex: 1100,
+                        mb: { xs: 2, md: 4 },
+                        p: { xs: 1, md: 2 },
+                        borderRadius: '14px',
+                        border: '1px solid rgba(255, 255, 255, 0.4)',
+                        background: 'rgba(255, 255, 255, 0.6)',
+                        backdropFilter: 'blur(20px)',
+                    }}
+                >
+                    <Stack
+                        direction={{ xs: 'column', md: 'row' }}
+                        spacing={{ xs: 1, md: 2 }}
+                        justifyContent="space-between"
+                        alignItems={{ xs: 'stretch', md: 'center' }}
+                    >
+                        <Box>
+                            <Stack direction="row" spacing={1} alignItems="center">
+                                <Typography
+                                    sx={{
+                                        fontSize: { xs: '1rem', md: '1.25rem' },
+                                        fontWeight: 800,
+                                        color: '#0f172a'
+                                    }}
+                                >
+                                    Results Analyst
+                                </Typography>
+                                <Chip label="Live Engine" size="small" sx={{ bgcolor: '#6366f1', color: '#fff', fontWeight: 800, fontSize: '0.65rem' }} />
+                            </Stack>
+                            <Typography sx={{ color: '#64748b', fontSize: 13, display: 'flex', alignItems: 'center', gap: 1 }}>
+                                <SchoolIcon size={16} />
+                                Best 6 subject compiler & report generator for {academic?.name || "current session"}.
                             </Typography>
-                            <Chip label="Live Engine" size="small" sx={{ bgcolor: '#6366f1', color: '#fff', fontWeight: 800, fontSize: '0.65rem' }} />
-                        </Stack>
-                        <Typography sx={{ color: '#64748b', fontSize: 13, display: 'flex', alignItems: 'center', gap: 1 }}>
-                            <SchoolIcon size={16} />
-                            Best 6 subject compiler & report generator for {academic?.name || "current session"}.
-                        </Typography>
-                    </Box>
-                    <Tooltip title="Refresh Session Status">
-                        <Button
-                            variant="outlined"
-                            size="small"
-                            onClick={fetchStats}
-                            disabled={loading}
-                            sx={{ borderRadius: 2, textTransform: 'none', borderColor: '#e2e8f0', color: '#64748b', bgcolor: '#fff' }}
+                        </Box>
+
+                        <Stack
+                            direction={{ xs: 'column', sm: 'row' }}
+                            spacing={2}
                         >
-                            {loading ? <CircularProgress size={16} sx={{ mr: 1 }} /> : <ProgressIcon size={16} style={{ marginRight: 8 }} />}
-                            Sync
-                        </Button>
-                    </Tooltip>
-                </Box>
+                            <Tooltip title="Refresh Session Status">
+                                <Button
+                                    variant="outlined"
+                                    size="small"
+                                    onClick={fetchStats}
+                                    disabled={loading}
+                                    sx={{
+                                        borderRadius: '14px',
+                                        textTransform: 'none',
+                                        px: 3,
+                                        borderColor: '#e2e8f0',
+                                        color: '#64748b',
+                                        bgcolor: '#fff'
+                                    }}
+                                >
+                                    {loading ? <CircularProgress size={16} sx={{ mr: 1 }} /> : <ProgressIcon size={16} style={{ marginRight: 8 }} />}
+                                    Sync
+                                </Button>
+                            </Tooltip>
+                        </Stack>
+                    </Stack>
+                </Paper>
 
                 {/* Summary Stats */}
-                <Grid container spacing={3} sx={{ mb: 4 }}>
+                <Grid container spacing={{ xs: 1, md: 2 }} sx={{ mb: { xs: 1, md: 2 } }}>
                     <Grid item xs={12} sm={6} md={3}>
                         <StatCard
                             title="Enrollment"
@@ -277,9 +315,10 @@ function Results() {
                             elevation={0}
                             sx={{
                                 p: 4,
-                                borderRadius: 4,
-                                border: '1px solid #e2e8f0',
-                                background: '#fff',
+                                borderRadius: '14px',
+                                border: '1px solid rgba(0,0,0,0.05)',
+                                background: 'rgba(255, 255, 255, 0.6)',
+                                backdropFilter: 'blur(20px)',
                                 position: 'relative',
                                 overflow: 'hidden'
                             }}

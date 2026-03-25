@@ -51,8 +51,8 @@ const StatCard = ({ title, count, icon, color, subtitle }) => (
     <Paper
         elevation={0}
         sx={{
-            p: 2.5,
-            borderRadius: 4,
+            p: 1,
+            borderRadius: '14px',
             border: '1px solid #e2e8f0',
             height: '100%',
             transition: 'all .3s ease',
@@ -213,35 +213,66 @@ function Workload() {
                 minHeight: '100vh',
                 bgcolor: '#f8fafc'
             }}>
-                {/* Header */}
-                <Box sx={{ mb: 4, px: { xs: 1, md: 0 }, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                    <Box>
-                        <Typography variant="h5" sx={{ fontWeight: 900, color: '#0f172a', letterSpacing: '-0.5px' }}>
-                            Workload Intelligence
-                        </Typography>
-                        <Typography sx={{ color: '#64748b', fontSize: 13, display: 'flex', alignItems: 'center', gap: 1 }}>
-                            <SchoolIcon size={16} color="#64748b" />
-                            Real-time grading progress and assignment distribution for {academic?.name || "current session"}.
-                        </Typography>
-                    </Box>
-                    <Tooltip title="Refresh Data">
-                        <IconButton
-                            onClick={fetchWorkloadData}
-                            disabled={loading}
-                            sx={{
-                                bgcolor: '#fff',
-                                border: '1px solid #e2e8f0',
-                                '&:hover': { bgcolor: '#f1f5f9' },
-                                borderRadius: 3
-                            }}
+                <Paper
+                    elevation={0}
+                    sx={{
+                        position: { xs: 'relative', md: 'sticky' },
+                        top: 0,
+                        zIndex: 1100,
+                        mb: { xs: 2, md: 4 },
+                        p: { xs: 1, md: 2 },
+                        borderRadius: '14px',
+                        border: '1px solid rgba(255, 255, 255, 0.4)',
+                        background: 'rgba(255, 255, 255, 0.6)',
+                        backdropFilter: 'blur(20px)',
+                    }}
+                >
+                    <Stack
+                        direction={{ xs: 'column', md: 'row' }}
+                        spacing={{ xs: 1, md: 2 }}
+                        justifyContent="space-between"
+                        alignItems={{ xs: 'stretch', md: 'center' }}
+                    >
+                        <Box>
+                            <Typography
+                                sx={{
+                                    fontSize: { xs: '1rem', md: '1.25rem' },
+                                    fontWeight: 800,
+                                    color: '#0f172a'
+                                }}
+                            >
+                                Workload Intelligence
+                            </Typography>
+                            <Typography sx={{ color: '#64748b', fontSize: 13, display: 'flex', alignItems: 'center', gap: 1 }}>
+                                <SchoolIcon size={16} color="#64748b" />
+                                Real-time grading progress and assignment distribution for {academic?.name || "current session"}.
+                            </Typography>
+                        </Box>
+
+                        <Stack
+                            direction={{ xs: 'column', sm: 'row' }}
+                            spacing={2}
                         >
-                            <RefreshIcon size={20} color="#64748b" className={loading ? 'spin' : ''} />
-                        </IconButton>
-                    </Tooltip>
-                </Box>
+                            <Tooltip title="Refresh Data">
+                                <IconButton
+                                    onClick={fetchWorkloadData}
+                                    disabled={loading}
+                                    sx={{
+                                        bgcolor: '#fff',
+                                        border: '1px solid #e2e8f0',
+                                        '&:hover': { bgcolor: '#f1f5f9' },
+                                        borderRadius: '14px'
+                                    }}
+                                >
+                                    <RefreshIcon size={20} color="#64748b" className={loading ? 'spin' : ''} />
+                                </IconButton>
+                            </Tooltip>
+                        </Stack>
+                    </Stack>
+                </Paper>
 
                 {/* Summary Stats */}
-                <Grid container spacing={3} sx={{ mb: 4 }}>
+                <Grid container spacing={{ xs: 2, md: 3 }} sx={{ mb: { xs: 3, md: 4 } }}>
                     <Grid item xs={12} sm={6} md={6} lg={3}>
                         <StatCard
                             title="Total Classes"
@@ -295,7 +326,7 @@ function Workload() {
                             flexGrow: 1,
                             '& .MuiOutlinedInput-root': {
                                 bgcolor: '#fff',
-                                borderRadius: 3,
+                                borderRadius: '14px',
                             }
                         }}
                         InputProps={{
@@ -321,7 +352,7 @@ function Workload() {
                             onChange={(e) => setFilterForm(e.target.value)}
                             sx={{
                                 bgcolor: '#fff',
-                                borderRadius: 3,
+                                borderRadius: '14px',
                                 fontWeight: 700
                             }}
                         >
@@ -338,9 +369,11 @@ function Workload() {
                     elevation={0}
                     sx={{
                         p: 0,
-                        borderRadius: 4,
-                        border: '1px solid #e2e8f0',
-                        bgcolor: '#fff',
+                        borderRadius: '14px',
+                        border: '1px solid rgba(0,0,0,0.05)',
+                        background: 'rgba(255, 255, 255, 0.6)',
+                        backdropFilter: 'blur(20px)',
+                        boxShadow: '0 10px 40px -10px rgba(0,0,0,0.05)',
                         overflow: 'hidden'
                     }}
                 >

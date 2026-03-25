@@ -68,15 +68,19 @@ export default function Profile() {
 
     return (
         <Fade in timeout={800}>
-            <Box sx={{ minHeight: '100vh', bgcolor: '#f8fafc', pb: 10 }}>
+            <Box sx={{
+                p: { xs: 0, md: 1 },
+                minHeight: '100vh',
+                bgcolor: '#f8fafc',
+                pb: 10
+            }}>
                 {/* MODERN TOP BANNER */}
                 <Box sx={{
                     height: 240,
                     background: 'linear-gradient(135deg, #385585ff 0%, #91bcf8ff 100%)',
                     position: 'relative',
                     mb: { xs: 15, md: 10 },
-                    borderTopLeftRadius: 20,
-                    borderTopRightRadius: 20,
+                    borderRadius: '14px',
                 }}>
                     <Container maxWidth="lg" sx={{ height: '100%', position: 'relative' }}>
                         <Box sx={{
@@ -129,7 +133,16 @@ export default function Profile() {
                                 Personal Information
                             </Typography>
 
-                            <Paper elevation={2} sx={{ borderRadius: 1, border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+                            <Paper
+                                elevation={0}
+                                sx={{
+                                    borderRadius: '14px',
+                                    border: '1px solid rgba(0,0,0,0.05)',
+                                    background: 'rgba(255, 255, 255, 0.6)',
+                                    backdropFilter: 'blur(20px)',
+                                    overflow: 'hidden'
+                                }}
+                            >
                                 {[
                                     { label: 'Full Name', value: user.username, icon: <Person />, key: 'user' },
                                     { label: 'Mobile Contact', value: user.phone || 'None provided', icon: <Phone />, key: 'phone' },
@@ -175,7 +188,15 @@ export default function Profile() {
                                 Security
                             </Typography>
 
-                            <Card elevation={0} sx={{ borderRadius: 1, border: '1px solid #e2e8f0', bgcolor: '#fff' }}>
+                            <Card
+                                elevation={0}
+                                sx={{
+                                    borderRadius: '14px',
+                                    border: '1px solid rgba(0,0,0,0.05)',
+                                    background: 'rgba(255, 255, 255, 0.6)',
+                                    backdropFilter: 'blur(20px)'
+                                }}
+                            >
                                 <CardContent sx={{ p: 3 }}>
                                     <Stack spacing={3}>
                                         <Box>
@@ -190,7 +211,7 @@ export default function Profile() {
                                                 variant="contained"
                                                 disableElevation
                                                 onClick={() => setOpen({ ...open, change: true })}
-                                                sx={{ bgcolor: '#1e293b', py: 1.2, borderRadius: 2.5, '&:hover': { bgcolor: '#000' } }}
+                                                sx={{ bgcolor: '#1e293b', py: 1.2, borderRadius: '14px', '&:hover': { bgcolor: '#000' } }}
                                                 startIcon={<VpnKey />}
                                             >
                                                 Change Password
