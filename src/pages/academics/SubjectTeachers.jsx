@@ -350,7 +350,7 @@ function SubjectTeachers({ readOnly = false, hideHeader = false }) {
                                                             }}
                                                             sx={{ textTransform: 'none', borderRadius: '8px', bgcolor: '#6366f1', '&:hover': { bgcolor: '#4f46e5' } }}
                                                         >
-                                                            Assign
+                                                            Manage
                                                         </Button>
                                                     </Tooltip>
                                                 </TableCell>

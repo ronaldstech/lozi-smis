@@ -75,7 +75,7 @@ function TeacherManagementDrawer({ open, onClose, teacher, subjects, loading, on
                                         />
                                     </Box>
                                     <IconButton size="small" color="error" onClick={() => onDelete(row.id)}>
-                                        <Trash size={18} variant="Bold" />
+                                        <Trash size={18} variant="Bold" color="#ef4444" />
                                     </IconButton>
                                 </Paper>
                             ))}
